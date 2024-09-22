@@ -29,7 +29,7 @@ for filepath in basic_files:
     filedir, filename = os.path.split(filepath)
 
     if filedir:
-        os.makedir(filedir, exist_ok=True)
+        os.makedirs(filedir, exist_ok=True)
         logging.info(f'Directory "{filedir}" for the file "{filename}" was created successfully...')
 
     if not os.path.exists(filepath):
