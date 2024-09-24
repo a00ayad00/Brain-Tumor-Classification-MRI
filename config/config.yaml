@@ -1,4 +1,4 @@
-artifacts_root: artifatcts
+artifacts_root: artifacts
 
 data_ingestion:
     dataset_name: sartajbhuvaji/brain-tumor-classification-mri
