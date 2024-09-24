@@ -1,4 +1,5 @@
 import setuptools
+from src import logger
 
 with open("README.md", 'r', encoding='utf-8') as f:
     long_description = f.read()  # If you want to publish this on PyPi

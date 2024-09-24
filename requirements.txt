@@ -1,7 +1,10 @@
+kaggle
 tensorflow
 pandas
 numpy
 matplotlib
+ensure
+python-box
 dvc
 pyYAML
 tqdm
