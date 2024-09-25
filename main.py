@@ -1,3 +1,7 @@
-from src.pipeline.data_load import main
+from src.pipeline.data_loading import data_load
+from src.pipeline.model_building import model_build
 
-main()
+
+data_load.main()
+
+model_build.main()
