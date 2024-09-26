@@ -1,6 +1,6 @@
 from src.constants import CONFIG_PATH, PARAMS_PATH
 from src.utils import read_yaml, create_dirs
-from src.data_types import DataConfig, ModelConfig
+from src.data_types import DataConfig, ModelConfig, CallbacksConfig
 from pathlib import Path
 import os
 
@@ -33,4 +33,24 @@ class ConfigManager:
             params_include_top = model_params.INCLUDE_TOP,
             params_weights = model_params.WEIGHTS,
             params_classes = model_params.CLASSES
+        )
+
+    def get_callbacks_config(self):
+        config = self.config.callbacks
+        tensorboard_dir = os.path.join(
+            self.artifacts_folder, config.folder_name, config.tensorboard_folder_name
+        )
+        checkpoint_path = os.path.join(
+            self.artifacts_folder, config.folder_name, config.checkpoint
+        )
+        
+        create_dirs([
+            tensorboard_dir,
+            os.path.dirname(checkpoint_path)
+        ])
+
+        return CallbacksConfig(
+            callbacks_folder = self.config.callbacks,
+            tensorboard_dir = tensorboard_dir,
+            checkpoint_path = checkpoint_path
         )

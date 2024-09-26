@@ -10,3 +10,9 @@ model: # VGG19
     model_folder_name: model  # artifacts/model
     model_path: model/model.h5
     updated_model_path: model/model_updated.h5
+
+
+callbacks:
+    folder_name: callbacks
+    tensorboard_folder_name: tensorboard
+    checkpoint: checkpoint/model.h5

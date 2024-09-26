@@ -19,3 +19,10 @@ class ModelConfig:
     params_include_top: bool
     params_weights: str
     params_classes: int
+
+
+@dataclass
+class CallbacksConfig:
+    callbacks_folder: str
+    tensorboard_dir: str
+    checkpoint_path: str
