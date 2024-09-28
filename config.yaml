@@ -1,13 +1,13 @@
-artifacts_root: artifacts
+artifacts_folder: artifacts
 
 
-data_ingestion:
+data:
     dataset_name: sartajbhuvaji/brain-tumor-classification-mri
-    data_folder_name: data  # artifacts/data
+    data_folder_name: data
 
 
 model: # VGG19
-    model_folder_name: model  # artifacts/model
+    model_folder_name: model
     model_path: model/model.h5
     updated_model_path: model/model_updated.h5
 

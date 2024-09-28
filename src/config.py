@@ -2,28 +2,38 @@ from src.constants import CONFIG_PATH, PARAMS_PATH
 from src.utils import read_yaml, create_dirs
 from src.data_types import DataConfig, ModelConfig, CallbacksConfig, TrainingConfig
 from pathlib import Path
+from src import logger
 import os
+import warnings
+
+
+warnings.filterwarnings('ignore')
 
 
 class ConfigManager:
     def __init__(self, config_path=CONFIG_PATH, params_path=PARAMS_PATH):
         self.config = read_yaml(CONFIG_PATH)
-        self.params = read_yaml(PARAMS_PATH)
-        self.artifacts_folder = self.config.artifacts_root
+        logger.info(f"The file: {CONFIG_PATH} loaded successfully...")
 
+        self.params = read_yaml(PARAMS_PATH)
+        logger.info(f"The file: {PARAMS_PATH} loaded successfully...")
+
+        self.artifacts_folder = self.config.artifacts_folder
         create_dirs([self.artifacts_folder])
 
     def get_data_config(self):
-        data_config = self.config.data_ingestion
+        data_config = self.config.data
+        create_dirs([self.config.artifacts_folder, data_config.data_folder_name])
         return DataConfig(
             dataset_name=data_config.dataset_name,
             data_folder_name=data_config.data_folder_name,
-            artifacts_root=self.artifacts_folder
+            artifacts_folder=self.config.artifacts_folder
         )
 
     def get_model_config(self):
         model_config = self.config.model
         model_params = self.params
+        create_dirs([model_config.model_folder_name])
         return ModelConfig(
             config_root_dir = Path(os.path.join(self.artifacts_folder, model_config.model_folder_name)),
             config_model_path = Path(os.path.join(self.artifacts_folder, model_config.model_path)),
@@ -43,7 +53,7 @@ class ConfigManager:
         checkpoint_path = os.path.join(
             self.artifacts_folder, config.folder_name, config.checkpoint
         )
-        
+
         create_dirs([
             tensorboard_dir,
             os.path.dirname(checkpoint_path)
@@ -57,8 +67,12 @@ class ConfigManager:
 
     def get_training_config(self):
         training_config = self.config.training
+        model_config = self.config.model
+
+        create_dirs([training_config.folder_name])
+
         training_data_path = os.path.join(
-            self.artifacts_folder, self.config.data_ingestion.data_folder_name, 'Training'
+            self.artifacts_folder, self.config.data.data_folder_name, 'Training'
         )
 
         return TrainingConfig(

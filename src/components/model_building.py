@@ -1,5 +1,9 @@
 import tensorflow as tf
 from src.data_types import ModelConfig
+import warnings
+
+
+warnings.filterwarnings('ignore')
 
 
 class Model:

@@ -2,6 +2,10 @@ import time
 import os
 from src.data_types import CallbacksConfig
 import tensorflow as tf
+import warnings
+
+
+warnings.filterwarnings('ignore')
 
 
 class Callbacks:

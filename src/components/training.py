@@ -1,5 +1,9 @@
 from src.data_types import TrainingConfig
 import tensorflow as tf
+import warnings
+
+
+warnings.filterwarnings('ignore')
 
 
 class Train:

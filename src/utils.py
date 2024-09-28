@@ -5,6 +5,9 @@ from src import logger
 from ensure import ensure_annotations
 from pathlib import Path
 import os
+import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np
 
 
 @ensure_annotations  # See trials.ipynb from notebooks to see an example
@@ -12,7 +15,7 @@ def read_yaml(yaml_path: Path) -> ConfigBox:
     try:
         with open(yaml_path) as yaml_file:
             content = yaml.safe_load(yaml_file)
-            logger.info(f"The file: {yaml_path} loaded successfully...")
+            # logger.info(f"The file: {yaml_path} loaded successfully...")
             return ConfigBox(content)  # See trials.ipynb from notebooks to see an example
     except BoxValueError:
         raise ValueError("yaml file is empty")
@@ -21,11 +24,11 @@ def read_yaml(yaml_path: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def create_dirs(dirs: list, verbose=True):
+def create_dirs(dirs: list):
     for dir in dirs:
-        os.makedirs(dir, exist_ok=True)
-        if verbose:
-            logger.info(f"Directory '{dir}' was successfully created...")
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+            logger.info(f"Directory '{dir}' was created successfully...")
 
 
 @ensure_annotations
@@ -41,3 +44,11 @@ def get_size(path):
 
     return f"~ {round(size/(1024*1024), 2)} MB"
 
+
+def imshow(path, title=None):
+    arrim = np.array(Image.open(path))
+    plt.imshow(arrim)
+    if title:
+        plt.suptitle(title, size=15)
+    plt.title(f'Size: {arrim.shape}', size=10)
+    plt.axis('off')
