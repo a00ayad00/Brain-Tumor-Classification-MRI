@@ -2,7 +2,6 @@ from src.constants import CONFIG_PATH, PARAMS_PATH
 from src.utils import read_yaml, create_dirs
 from src.data_types import DataConfig, ModelConfig, CallbacksConfig, TrainingConfig, EvalConfig
 from pathlib import Path
-from src import logger
 import os
 import warnings
 

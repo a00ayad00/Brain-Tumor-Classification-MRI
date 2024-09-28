@@ -1,0 +1,57 @@
+stages:
+
+
+    data:
+        cmd: python src/pipeline/data_loading.py
+        deps:
+            - src/pipeline/data_loading.py
+            - config.yaml
+        outs:
+            - artifacts/data
+
+
+    model:
+        cmd: python src/pipeline/model_building.py
+        deps:
+            - src/pipeline/model_building.py
+            - config.yaml
+        params:
+            - IMAGE_SIZE
+            - INCLUDE_TOP
+            - CLASSES
+            - WEIGHTS
+            - LEARNING_RATE
+        outs:
+            - artifacts/model
+
+
+    training:
+        cmd: python src/pipeline/training.py
+        deps:
+            - src/pipeline/training.py
+            - src/components/callbacks.py
+            - config.yaml
+            - artifacts/data/Training
+            - artifacts/model
+        params:
+            - IMAGE_SIZE
+            - EPOCHS
+            - BATCH_SIZE
+            - AUGMENTATION
+        outs:
+            - artifacts/training/model.h5
+
+
+    evaluation:
+        cmd: python src/pipeline/evaluation.py
+        deps:
+            - src/pipeline/evaluation.py
+            - config.yaml
+            - artifacts/data/Testing
+            - artifacts/training/model.h5
+        params:
+            - IMAGE_SIZE
+            - BATCH_SIZE
+        metrics:
+            - eval.json:
+                  cache: false
