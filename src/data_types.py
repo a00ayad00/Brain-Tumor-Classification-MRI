@@ -26,3 +26,15 @@ class CallbacksConfig:
     callbacks_folder: str
     tensorboard_dir: str
     checkpoint_path: str
+
+
+@dataclass
+class TrainingConfig:
+    training_folder: str
+    trained_model_path: str
+    updated_model_path: str
+    training_data: str
+    params_epochs: int
+    params_batch_size: int
+    params_augmentation: bool
+    params_image_size: list

@@ -1,7 +1,7 @@
 import time
 import os
 from src.data_types import CallbacksConfig
-import tensoflow as tf
+import tensorflow as tf
 
 
 class Callbacks:

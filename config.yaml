@@ -16,3 +16,8 @@ callbacks:
     folder_name: callbacks
     tensorboard_folder_name: tensorboard
     checkpoint: checkpoint/model.h5
+
+
+training:
+    folder_name: training
+    trained_model_path: training/model.h5
