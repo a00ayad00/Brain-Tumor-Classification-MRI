@@ -7,7 +7,8 @@ stages:
             - src/pipeline/data_loading.py
             - config.yaml
         outs:
-            - artifacts/data
+            - artifacts/data/Training
+            - artifacts/data/Testing
 
 
     model:
