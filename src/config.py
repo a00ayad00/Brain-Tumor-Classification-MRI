@@ -13,10 +13,7 @@ warnings.filterwarnings('ignore')
 class ConfigManager:
     def __init__(self, config_path=CONFIG_PATH, params_path=PARAMS_PATH):
         self.config = read_yaml(CONFIG_PATH)
-        logger.info(f"The file: {CONFIG_PATH} loaded successfully...")
-
         self.params = read_yaml(PARAMS_PATH)
-        logger.info(f"The file: {PARAMS_PATH} loaded successfully...")
 
         self.artifacts_folder = self.config.artifacts_folder
         create_dirs([self.artifacts_folder])

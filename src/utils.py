@@ -15,7 +15,7 @@ def read_yaml(yaml_path: Path) -> ConfigBox:
     try:
         with open(yaml_path) as yaml_file:
             content = yaml.safe_load(yaml_file)
-            # logger.info(f"The file: {yaml_path} loaded successfully...")
+            logger.info(f"The file: {yaml_path} loaded successfully...")
             return ConfigBox(content)  # See trials.ipynb from notebooks to see an example
     except BoxValueError:
         raise ValueError("yaml file is empty")
@@ -28,7 +28,7 @@ def create_dirs(dirs: list):
     for dir in dirs:
         if not os.path.exists(dir):
             os.makedirs(dir)
-            logger.info(f"Directory '{dir}' was created successfully...")
+            logger.info(f"\nDirectory '{dir}' was created successfully...")
 
 
 @ensure_annotations

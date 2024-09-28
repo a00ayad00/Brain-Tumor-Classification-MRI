@@ -32,9 +32,9 @@ class train:
 
 if __name__ == '__main__':
     try:
-        logger.info(f">>>>>>>  {step} has started to train the '{model_path}'...  <<<<<<<")
+        logger.info(f"\n>>>>>>>  {step} has started to train the '{model_path}'...  <<<<<<<")
         train.main()
-        logger.info(f"<<<<<<<  The model was trained successfully and saved at '{trained_model_path}' >>>>>>>")
+        logger.info(f"<<<<<<<  The model was trained successfully and saved at '{trained_model_path}' >>>>>>>\n")
     except Exception as e:
         logger.exception(e)
         raise e

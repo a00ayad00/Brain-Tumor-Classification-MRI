@@ -17,9 +17,9 @@ class model_build:
 
 if __name__ == '__main__':
     try:
-        logger.info(f">>>>>>>  {step} has started...  <<<<<<<")
+        logger.info(f"\n>>>>>>>  {step} has started...  <<<<<<<")
         model_build.main()
-        logger.info(f"<<<<<<<  {step} was completed successfully  >>>>>>>")
+        logger.info(f"<<<<<<<  {step} was completed successfully  >>>>>>>\n")
     except Exception as e:
         logger.exception(e)
         raise e
