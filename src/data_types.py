@@ -38,3 +38,11 @@ class TrainingConfig:
     params_batch_size: int
     params_augmentation: bool
     params_image_size: list
+
+
+@dataclass
+class EvalConfig:
+    model_path: str
+    testing_data: str
+    params_image_size: list
+    params_batch_size: int

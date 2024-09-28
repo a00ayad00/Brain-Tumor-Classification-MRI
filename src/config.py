@@ -1,6 +1,6 @@
 from src.constants import CONFIG_PATH, PARAMS_PATH
 from src.utils import read_yaml, create_dirs
-from src.data_types import DataConfig, ModelConfig, CallbacksConfig, TrainingConfig
+from src.data_types import DataConfig, ModelConfig, CallbacksConfig, TrainingConfig, EvalConfig
 from pathlib import Path
 from src import logger
 import os
@@ -81,4 +81,12 @@ class ConfigManager:
             params_batch_size = self.params.BATCH_SIZE,
             params_augmentation = self.params.AUGMENTATION,
             params_image_size = self.params.IMAGE_SIZE
+        )
+
+    def get_eval_config(self):
+        return EvalConfig(
+            model_path = os.path.join(self.artifacts_folder, self.config.training.trained_model_path),
+            testing_data = os.path.join(self.artifacts_folder, self.config.data.data_folder_name, 'Testing'),
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
         )
