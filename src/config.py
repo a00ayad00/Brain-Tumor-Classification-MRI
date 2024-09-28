@@ -19,7 +19,7 @@ class ConfigManager:
 
     def get_data_config(self):
         data_config = self.config.data
-        create_dirs([self.config.artifacts_folder, data_config.data_folder_name])
+        create_dirs([os.path.join(self.artifacts_folder, data_config.data_folder_name)])
         return DataConfig(
             dataset_name=data_config.dataset_name,
             data_folder_name=data_config.data_folder_name,
@@ -29,7 +29,7 @@ class ConfigManager:
     def get_model_config(self):
         model_config = self.config.model
         model_params = self.params
-        create_dirs([model_config.model_folder_name])
+        create_dirs([os.path.join(self.artifacts_folder, model_config.model_folder_name)])
         return ModelConfig(
             config_root_dir = Path(os.path.join(self.artifacts_folder, model_config.model_folder_name)),
             config_model_path = Path(os.path.join(self.artifacts_folder, model_config.model_path)),
@@ -63,9 +63,8 @@ class ConfigManager:
 
     def get_training_config(self):
         training_config = self.config.training
-        model_config = self.config.model
 
-        create_dirs([training_config.folder_name])
+        create_dirs([os.path.join(self.artifacts_folder, training_config.folder_name)])
 
         training_data_path = os.path.join(
             self.artifacts_folder, self.config.data.data_folder_name, 'Training'

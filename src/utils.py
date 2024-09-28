@@ -42,7 +42,7 @@ def get_size(path):
                 fp = os.path.join(path, f)
                 size += os.path.getsize(fp)
 
-    return f"~ {round(size/(1024*1024), 2)} MB"
+    return round(size/(1024*1024), 2)
 
 
 def imshow(path, title=None):

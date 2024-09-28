@@ -17,7 +17,7 @@ class data_load:
 if __name__ == '__main__':
     try:
         logger.info(f"\n>>>>>>>  {step} has started...  <<<<<<<")
-        data_load().main()
+        data_load.main()
         logger.info(f"<<<<<<<  {step} was completed successfully  >>>>>>>\n")
     except Exception as e:
         logger.exception(e)
