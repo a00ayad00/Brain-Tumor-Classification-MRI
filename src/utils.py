@@ -8,6 +8,7 @@ import os
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
+import base64
 
 
 @ensure_annotations  # See trials.ipynb from notebooks to see an example
@@ -52,3 +53,9 @@ def imshow(path, title=None):
         plt.suptitle(title, size=15)
     plt.title(f'Size: {arrim.shape}', size=10)
     plt.axis('off')
+
+
+def decode_img(img_string, file_path):
+    img = base64.b64decode(img_string)
+    with open(file_path, 'wb') as f:
+        f.write(img)

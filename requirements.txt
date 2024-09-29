@@ -7,7 +7,6 @@ ensure
 python-box
 dvc
 pyYAML
-tqdm
 Flask
 Flask-Cors
 -e .
