@@ -1,4 +1,4 @@
-from python:3.12-slim-buster
+from python:3.12.6-slim
 
 run apt install awscli -y
 
