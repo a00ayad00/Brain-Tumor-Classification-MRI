@@ -19,7 +19,7 @@
 ### 1. Login to AWS console
 ### 2. Create IAM user for deployment with specific access
 1) EC2: For the virtual machine
-<br>2) ECR: Elastic Container registry to save your docker image in AWS Docker Hub
+2) ECR: Elastic Container registry to save your docker image in AWS Docker Hub
 <br> **Policies:** _AmazonEC2ContainerRegistryFullAccess_ and _AmazonEC2FullAccess_
 ### 3. Create ECR Repo to store the docker image
 **Save the URI like thils:** `962265167812.dkr.ecr.us-east-1.amazonaws.com/brain-tumor-classification`
@@ -28,7 +28,7 @@
 **Optional**
 <br> `sudo apt-get update -y`
 <br> `sudo apt-get upgrade`
-**Required**
+<br>**Required**
 <br> `curl -fsSL https://get.docker.com -o get-docker.sh`
 <br> `sudo sh get-docker.sh`
 <br> `sudo usermod -aG docker ubuntu`
